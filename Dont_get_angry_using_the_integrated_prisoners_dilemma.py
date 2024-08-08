@@ -12,8 +12,8 @@ class Piece:
     def __init__(self, position = 0, on_board = False):
         self.position = position
         self.on_board = on_board
-    
-        
+
+
 
 class Player:
     def __init__(self, index, pieces):
@@ -26,23 +26,24 @@ class Player:
 
 players = [Player(i, [Piece(), Piece(), Piece(), Piece()]) for i in range(4)]
 
-print([players[i].starting_pos for i in range(4)]) 
+starting_positions = [players[i].starting_pos for i in range(4)]
+print(f"Starting positions: {starting_positions}")
 
 def turn(player, pieces_on_board):
     if player_count >= 2 and player_count <= 6:
         if pieces_on_board > 0:
             diceroll = random.randint(1, 6)
-            print(diceroll) 
-            players[player].pieces[0].position += diceroll 
+            print(f"diceroll for player {player}: {diceroll}")
+            players[player].pieces[0].position += diceroll
             player
         else:
             for i in range(3):
                 diceroll = random.randint(1, 6)
                 if diceroll == 6:
-                    pieces_on_board  = pieces_on_board + 1               
+                    pieces_on_board  = pieces_on_board + 1
                     return
                 else:
-                    return 
+                    return
     else:
         print("invalid amount of players")
 
